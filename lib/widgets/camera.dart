@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class Camera extends StatefulWidget {
   @override
@@ -23,6 +23,7 @@ class CameraState extends State<Camera> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Camera'),
@@ -56,7 +57,7 @@ class CameraState extends State<Camera> {
           ],
         ),
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class Drag extends StatelessWidget {
   @override
@@ -32,7 +32,7 @@ class Drag extends StatelessWidget {
           ),
         ],
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }
@@ -65,6 +65,8 @@ class DragItemState extends State<DragItem> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
+
     TextStyle style = TextStyle(
       color: Colors.white,
       decoration: TextDecoration.none,

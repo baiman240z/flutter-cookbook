@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 
@@ -13,6 +13,7 @@ class HttpConnState extends State<HttpConn> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('HTTP connection'),
@@ -67,7 +68,7 @@ class HttpConnState extends State<HttpConn> {
           ],
         ),
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

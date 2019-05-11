@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class Web extends StatefulWidget {
   @override
@@ -14,12 +14,13 @@ class WebState extends State<Web> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Web view'),
       ),
       body: _build(context),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../parts/sidemenu.dart';
-import '../counter_model.dart';
+import '../classes/util.dart';
+import '../appmodel.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,10 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
+
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32.0),
       child: Row(
@@ -43,7 +43,7 @@ class HomeState extends State<Home> {
             Icons.star,
             color: Colors.red[500],
           ),
-          ScopedModelDescendant<CounterModel>(builder: (context, child, model) => Text('${model.counter}')),
+          ScopedModelDescendant<AppModel>(builder: (context, child, model) => Text('${model.counter}')),
         ],
       ),
     );
@@ -109,14 +109,14 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
           textSection,
         ],
       ),
-      floatingActionButton: ScopedModelDescendant<CounterModel>(
+      floatingActionButton: ScopedModelDescendant<AppModel>(
         builder: (context, child, model) => FloatingActionButton(
           onPressed: () => model.increment(),
           tooltip: 'Increment',
           child: Icon(Icons.favorite)
         )
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 import 'package:location/location.dart' as geo;
 import 'package:flutter/services.dart';
 
@@ -24,12 +24,13 @@ class LocationState extends State<Location> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Geo Location'),
       ),
       body: _build(),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class _Page {
   const _Page({this.icon, this.text});
@@ -41,6 +41,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     final Color iconColor = Theme.of(context).accentColor;
     return DefaultTabController(
       length: 3,
@@ -78,7 +79,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
             );
           }).toList(),
         ),
-        drawer: SideMenu.drawer(context),
+        drawer: Util.drawer(context),
       ),
     );
   }

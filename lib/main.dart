@@ -13,20 +13,20 @@ import 'widgets/httpconn.dart';
 import 'widgets/location.dart';
 import 'widgets/web.dart';
 import 'widgets/fcm.dart';
-import 'counter_model.dart';
+import 'appmodel.dart';
 
 void main() {
-  runApp(MyApp(model: CounterModel()));
+  runApp(MyApp(model: AppModel(),));
 }
 
 class MyApp extends StatelessWidget {
-  final CounterModel model;
+  final AppModel model;
 
-  const MyApp({Key key, @required this.model}) : super(key: key);
-
+  const MyApp({Key key, @required this.model,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<CounterModel>(
+
+    return ScopedModel<AppModel>(
       model: model,
       child: MaterialApp(
         theme: ThemeData.dark(),

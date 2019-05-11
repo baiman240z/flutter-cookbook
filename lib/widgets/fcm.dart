@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class Fcm extends StatefulWidget {
   @override
@@ -30,28 +30,7 @@ class FcmState extends State<Fcm> {
       });
     }
 
-    _fbm.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onMessage] $message");
-        _buildDialog(context, "${message['notification']['title']}", "${message['notification']['body']}");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onLaunch: $message");
-        _buildDialog(context, "${message['notification']['title']}", "${message['notification']['body']}");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onResume: $message");
-        _buildDialog(context, "${message['notification']['title']}", "${message['notification']['body']}");
-      },
-    );
-    _fbm.requestNotificationPermissions(
-      const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _fbm.onIosSettingsRegistered
-      .listen((IosNotificationSettings settings) {
-      print("@@@@@@@@@@@@@@@@@ Settings registered: $settings");
-    });
     _fbm.getToken().then((String token) {
-      print("@@@@@@@@@@@@@@@@@ Push Messaging token: $token");
       setState(() {
         _token = token;
       });
@@ -60,12 +39,13 @@ class FcmState extends State<Fcm> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Firebase messaging'),
       ),
       body: _build(context),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 
@@ -140,33 +120,6 @@ class FcmState extends State<Fcm> {
           style: TextStyle(fontSize: 20.0),
         ),
       ],
-    );
-  }
-
-  void _buildDialog(BuildContext context, String title, String message) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: Text('$title'),
-          content: Text("$message"),
-          actions: <Widget>[
-            FlatButton(
-              child: const Text('CLOSE'),
-              onPressed: () {
-                Navigator.pop(context, false);
-              },
-            ),
-            new FlatButton(
-              child: const Text('SHOW'),
-              onPressed: () {
-                Navigator.pop(context, true);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 

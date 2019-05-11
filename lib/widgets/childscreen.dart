@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 import 'package:english_words/english_words.dart';
 
 class ListScreen extends StatelessWidget {
@@ -7,6 +7,7 @@ class ListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('English words'),
@@ -34,7 +35,7 @@ class ListScreen extends StatelessWidget {
           },
         );
       }),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

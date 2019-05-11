@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Layout'),
@@ -72,7 +73,7 @@ class Layout extends StatelessWidget {
           )
         ],
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

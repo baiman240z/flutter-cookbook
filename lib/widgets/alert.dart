@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 enum _DialogActionType {
   ok,
@@ -86,6 +86,7 @@ class AlertState extends State<Alert> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Alert'),
@@ -93,7 +94,7 @@ class AlertState extends State<Alert> {
       body: Builder(
         builder: bulildBody, // builder: for Scaffold.of(context)
       ),
-      drawer: SideMenu.drawer(context),
+      drawer: Util.drawer(context),
     );
   }
 }

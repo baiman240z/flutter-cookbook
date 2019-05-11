@@ -8,7 +8,7 @@ import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'player_widget.dart';
-import '../parts/sidemenu.dart';
+import '../classes/util.dart';
 
 typedef void OnError(Exception exception);
 
@@ -129,6 +129,7 @@ class _AudioAppState extends State<AudioApp> {
 
   @override
   Widget build(BuildContext context) {
+    Util.build(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -146,7 +147,7 @@ class _AudioAppState extends State<AudioApp> {
         body: TabBarView(
           children: [remoteUrl(), localFile(), localAsset(), advanced()],
         ),
-        drawer: SideMenu.drawer(context),
+        drawer: Util.drawer(context),
       ),
     );
   }
