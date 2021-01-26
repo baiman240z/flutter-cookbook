@@ -11,8 +11,6 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
-
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32.0),
       child: Row(

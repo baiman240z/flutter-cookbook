@@ -7,7 +7,6 @@ class ListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('English words'),

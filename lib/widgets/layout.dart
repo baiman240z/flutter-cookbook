@@ -4,7 +4,6 @@ import '../classes/util.dart';
 class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Layout'),

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:io';
 
 class Util {
-  static FirebaseMessaging _fcm = FirebaseMessaging();
-
   static Drawer drawer(BuildContext context) {
     return Drawer(
       child: ListView(
@@ -24,14 +21,6 @@ class Util {
             title: Text('Home'),
             onTap: () {
               Navigator.pushReplacementNamed(context, '/home');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.web),
-            title: Text('Firebase messaging'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/fcm');
             },
           ),
           ListTile(
@@ -133,28 +122,6 @@ class Util {
         ],
       ),
     );
-  }
-
-  static void build(BuildContext context) {
-    _fcm.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onMessage] $message");
-        _buildDialog(context, message['notification']['title'], message['notification']['body']);
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("@@@@@@@@@@@@@@@@@@@@@ onResume: $message");
-        Navigator.pushReplacementNamed(context, message['data']['url']);
-      },
-    );
-    _fcm.requestNotificationPermissions(
-      const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _fcm.onIosSettingsRegistered
-      .listen((IosNotificationSettings settings) {
-      print("@@@@@@@@@@@@@@@@@ Settings registered: $settings");
-    });
   }
 
   static void _buildDialog(BuildContext context, String title, String message) {

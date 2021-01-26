@@ -129,7 +129,6 @@ class _AudioAppState extends State<AudioApp> {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(

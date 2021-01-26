@@ -14,7 +14,6 @@ class WebState extends State<Web> {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Web view'),

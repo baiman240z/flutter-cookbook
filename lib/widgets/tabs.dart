@@ -41,7 +41,6 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     final Color iconColor = Theme.of(context).accentColor;
     return DefaultTabController(
       length: 3,

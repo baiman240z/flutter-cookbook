@@ -23,7 +23,6 @@ class CameraState extends State<Camera> {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Camera'),

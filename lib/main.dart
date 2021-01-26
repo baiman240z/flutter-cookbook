@@ -12,7 +12,6 @@ import 'widgets/audio.dart';
 import 'widgets/httpconn.dart';
 import 'widgets/location.dart';
 import 'widgets/web.dart';
-import 'widgets/fcm.dart';
 import 'appmodel.dart';
 
 void main() {
@@ -33,7 +32,6 @@ class MyApp extends StatelessWidget {
         home: Splash(),
         routes: <String, WidgetBuilder>{
           '/home': (BuildContext context) => Home(),
-          '/fcm': (BuildContext context) => Fcm(),
           '/alert': (BuildContext context) => Alert(),
           '/tabs': (BuildContext context) => Tabs(),
           '/childscreen': (BuildContext context) => ListScreen(),

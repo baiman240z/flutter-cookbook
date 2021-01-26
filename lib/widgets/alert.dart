@@ -86,7 +86,6 @@ class AlertState extends State<Alert> {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Alert'),

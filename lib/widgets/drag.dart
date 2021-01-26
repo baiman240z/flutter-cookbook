@@ -65,8 +65,6 @@ class DragItemState extends State<DragItem> {
 
   @override
   Widget build(BuildContext context) {
-    Util.build(context);
-
     TextStyle style = TextStyle(
       color: Colors.white,
       decoration: TextDecoration.none,
