@@ -111,6 +111,14 @@ class Util {
               Navigator.pushNamed(context, '/location');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: Text('OS setting'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/os-setting');
+            },
+          ),
           Divider(),
           ListTile(
             leading: const Icon(Icons.close),
