@@ -1,4 +1,3 @@
-import 'package:cookbook/widgets/os_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'widgets/splash.dart';
@@ -13,6 +12,7 @@ import 'widgets/audio.dart';
 import 'widgets/httpconn.dart';
 import 'widgets/location.dart';
 import 'widgets/web.dart';
+import 'widgets/os_setting.dart';
 import 'appmodel.dart';
 
 void main() {
