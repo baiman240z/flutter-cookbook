@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cookbook/classes/util.dart';
 import 'package:flutter/services.dart';
 import 'package:notifications_enabled/notifications_enabled.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class OsSetting extends StatefulWidget {
   @override
@@ -9,15 +10,31 @@ class OsSetting extends StatefulWidget {
 }
 
 class OsSettingState extends State<OsSetting> {
+  static final _fcm  = FirebaseMessaging();
   String _notificationsEnabledText = '';
 
   @override
   void initState() {
     super.initState();
-    _init();
+
+    _loadNoti();
+
+    print('@@@@@@@@@@@ initState');
+    _fcm.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, alert: true, badge: true)
+    );
+    _fcm.onIosSettingsRegistered.listen((IosNotificationSettings setting) {
+      print('@@@@@@@ onIosSettingsRegistered');
+      print(setting);
+
+      setState(() {
+        _notificationsEnabledText = setting.alert ?
+        'Notification enabled by dialog' : 'Notification disabled by dialog';
+      });
+    });
   }
 
-  Future<void> _init() async {
+  Future<void> _loadNoti() async {
     String notificationsEnabledText;
     try {
       final areNotificationsEnabled = await NotificationsEnabled.notificationsEnabled;
