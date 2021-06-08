@@ -23,11 +23,7 @@ class HttpConnState extends State<HttpConn> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
-              splashColor: Colors.yellow,
-              color: Color(0xFF4aa0d5),
+            ElevatedButton(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),

@@ -14,6 +14,7 @@ class OsSetting extends StatefulWidget {
 class OsSettingState extends State<OsSetting> {
   static final _fcm  = FirebaseMessaging();
   static final _device = DeviceInfoPlugin();
+  static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   String _notificationsEnabledText = '';
   String _androidId = '';
@@ -148,6 +149,28 @@ class OsSettingState extends State<OsSetting> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(height: 10.0,),
+              ElevatedButton(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: Text(
+                      'Battery Level',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    ),
+                  ),
+                ),
+                onPressed: () async {
+                  try {
+                    final int level = await platform.invokeMethod('getBatteryLevel');
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Battery level: $level'),
+                    ));
+                  } on PlatformException catch (e) {
+                    print('${e.message}');
+                  }
+                },
               ),
             ],
           ),

@@ -23,18 +23,18 @@ class AlertState extends State<Alert> {
           ],
         ),
         actions: <Widget>[
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
-              Scaffold.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text('ok pressed.'),
               ));
               Navigator.pop(context, _DialogActionType.ok);
             },
             child: const Text('OK'),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
-              Scaffold.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text('cancel pressed.'),
               ));
               Navigator.pop(context, _DialogActionType.cancel);
